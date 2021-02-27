@@ -116,11 +116,38 @@ Use the hungryDog function and feeding requirements below to do the following:
   NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
 */  
 
-function hungryDog(/*add your code here*/){
-    /*add your code here*/
+function hungryDog(weight , age){
+    // If age given is less than 1 which means doggy is a puppy
+    if (age < 1) {
+      // if doggy's age is between 2-4 months, let food be 10% of doggy's weight
+      if ((age >= (2/12))  && age <= (4/12)) {
+      return weight * .10;
+      }
+      // else if doggy's age is between 4-7 months, let food be 5% of doggy's weight
+      else if ((age >= (4/12))  && (age <= (7/12))) {
+       return weight * .05;
+      }
+      // else all other ages under 1 year old
+     return weight * .04;
+    } else {
+    // else all other cases are true: age is 1 or higher and doggy is an adult
+      if (weight <= 5) {
+        // if weight is up to 5 lbs
+       return weight * .05;
+      } else if (weight > 5 && weight <= 10) {
+        // if weight is between 5-10 lbs
+       return weight *  .04;
+      } else if (weight > 10 && weight <= 15) {
+        // if weight is between 11-15 lbs
+        return weight * .03;
+      } else {
+        // else weight is higher than 15
+       return weight * .02;
+      }
+    }
   }
 
-
+console.log(hungryDog(10,0.6));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
