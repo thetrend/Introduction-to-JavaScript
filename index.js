@@ -41,8 +41,6 @@ if (b === 15) {
 }
 console.log(a);
 
-
-
 /*
 Task 1c - Convert Strings to Numbers
 
@@ -54,8 +52,9 @@ Do the following:
    HINT: look up the Number method
 */
 
-
-
+let c = "1999";
+let d = Number(c);
+console.log(d);
 
 /*
 Task 1d - Multiply
