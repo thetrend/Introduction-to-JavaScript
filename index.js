@@ -17,8 +17,12 @@ Do the following:
 
    HINT: no function required
 */
-
-
+const votingAge = 19;
+if (votingAge >= 18) {
+  console.log(true);
+} else {
+  console.log(false);
+}
 
 /*
 Task 1b - Values
@@ -30,10 +34,12 @@ Do the following:
 
    HINT: no function required
 */
-
-
-
-
+let a = 25;
+const b = 15;
+if (b === 15) {
+  a = 30;
+}
+console.log(a);
 
 /*
 Task 1c - Convert Strings to Numbers
@@ -46,8 +52,9 @@ Do the following:
    HINT: look up the Number method
 */
 
-
-
+let c = "1999";
+let d = Number(c);
+console.log(d);
 
 /*
 Task 1d - Multiply
@@ -58,11 +65,12 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
+function multiply(a, b){
     /*add your code here*/
+    return a * b;
   }
 
-
+console.log(multiply(5,4));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -74,11 +82,12 @@ Do the following:
    3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
+function dogYears(age){
     /*add your code here*/
+    return age * 7;
 }
 
-
+console.log(dogYears(15));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -107,11 +116,41 @@ Use the hungryDog function and feeding requirements below to do the following:
   NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
 */  
 
-function hungryDog(/*add your code here*/){
-    /*add your code here*/
+function hungryDog(weight, age){
+    let multiplier;
+    // If age given is less than 1 which means doggy is a puppy
+    if (age < 1) {
+      // if doggy's age is between 2-4 months, let food be 10% of doggy's weight
+      if ((age >= (2/12))  && age <= (4/12)) {
+      multiplier =  .10;
+      }
+      // else if doggy's age is between 4-7 months, let food be 5% of doggy's weight
+      else if ((age >= (4/12))  && (age <= (7/12))) {
+       multiplier =  .05;
+      }
+      // else all other ages under 1 year old
+     multiplier =  .04;
+    } else {
+    // else all other cases are true: age is 1 or higher and doggy is an adult
+      if (weight <= 5) {
+        // if weight is up to 5 lbs
+       multiplier =  .05;
+      } else if (weight > 5 && weight <= 10) {
+        // if weight is between 5-10 lbs
+       multiplier =   .04;
+      } else if (weight > 10 && weight <= 15) {
+        // if weight is between 11-15 lbs
+        multiplier =  .03;
+      } else {
+        // else weight is higher than 15
+       multiplier =  .02;
+      }
+    }
+    let food = weight * multiplier;
+    return food;
   }
 
-
+console.log(hungryDog(Math.random() * 101, Math.random() * 16));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -135,10 +174,39 @@ Use the game function below to do the following:
 */
 
 function game(user, computer){
-    /*add your code here*/
+  /*
+  1. Declare decision variable as an empty variable
+   */
+  let decision;
+
+  /*
+  2. If computer is not defined, randomize it as a round number between 0 and 3
+   */
+  if (!computer) {
+    computer = Math.round(Math.random() * 3);
+    if (computer > 0) { computer = 'rock'; }
+    else if (computer > 1) { computer = 'scissors'; }
+    else { computer = 'paper'; }
+  }
+
+  /*
+  3a. if strings are equal, call a tie
+  3b. else if the following combinations exist, the user automatically loses
+  3c. else all other combinations result in winning decisions
+   */
+  if (user === computer) {
+    decision = 'it\'s a tie';
+  } else if ((computer === 'scissors' && user === 'paper') || (computer === 'paper' && user === 'rock') || (computer === 'rock' && user === 'scissors')) {
+    decision = 'you lose!';
+  } else {
+    decision = 'you win!';
+  }
+
+  // Return decision
+  return decision;
 }
-  
-  
+
+console.log(game('paper'));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -151,11 +219,16 @@ Using the miles function below do the following:
   3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-    /*add your code here*/
-  }
+function miles(km){
+  /*
+  Per Google 1 km = 0.621371 miles
+   */
+  let miles = km * 0.621371;
+  return miles;
+}
 
-
+// Return a random calculation where km < 11
+console.log(miles(Math.random() * 11));
 
 //Task 5b - Feet to CM
 /*
@@ -165,11 +238,16 @@ Using the feet function below do the following:
   3. Return number of feet
 */
 
-function feet(/*add your code here*/){
-    /*add your code here*/
-  }
- 
+function feet(cm){
+  /*
+  Per Google 1 ft = 30.48 cm
+   */
+  let feet = cm / 30.48;
+  return feet; 
+}
 
+// return a random calucation where cm < 300
+console.log(feet(Math.random() * 301));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -181,10 +259,20 @@ Using the annoyingSong function below do the following:
       "{number} bottles of soda on the wall, {number} bottles of soda, take one down pass it around {number left over} bottles of soda on the wall"
 */
 
-function annoyingSong(/*add your code here*/){
-        /*add your code here*/
+function annoyingSong(start){
+  /*
+  1. Declare i so we can modify i and leave start as immutable value
+  2. Set i to be greater than 0 so it stops at 0
+  3. Finally let i decrement until it gets to the set value of 0
+  4. Return the requested string
+   */
+  for (let i = start; i > 0; i--) {
+    return `${i} bottles of soda on the wall, ${i} bottles of soda, take one down pass it around ${i - 1} bottles of soda on the wall`;
   }
+}
 
+// return the annoying song function where start is a random value between 0 and 10
+console.log(annoyingSong(Math.round(Math.random() * 11)));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -201,11 +289,44 @@ Using the grade function below do the following:
    below should return 'you got an F'
 */
   
-function grade(/*Your Code here */){
-  /*Your Code here */
+function grade(score){
+  /*
+  1. Declare letter as an empty variable
+  2. Check the value of score and assign its respective letter
+   */
+  let letter;
+  if (score < 60) {
+    letter = 'F';
+  } else if (score >= 60 && score < 70) {
+    letter = 'D';
+  } else if (score >= 70 && score < 80) {
+    letter = 'C';
+  } else if (score >= 80 && score < 90) {
+    letter = 'B';
+  } else {
+    letter = 'A';
   }
-  
-  
+
+  /*
+  3. Declare prefix as an empty variable
+  4. If letter is an A or F, assign prefix as "an"
+  5. Else prefix should be "a"
+   */
+  let prefix;
+  if (letter === 'A' || letter === 'F') {
+    prefix = 'an';
+  } else {
+    prefix = 'a';
+  }
+
+  /*
+  6. Create result variable and return it
+   */
+  let result = 'you got ' + prefix + ' ' + letter;
+  return result;
+ }
+
+ console.log(grade(Math.random() * 101));
 
 /*💪💪💪💪💪💪💪💪💪💪 Stretch 💪💪💪💪💪💪💪💪💪💪*/
 
