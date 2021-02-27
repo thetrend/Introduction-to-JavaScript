@@ -177,9 +177,19 @@ function game(user, computer){
   let decision;
 
   /*
-  2a. if strings are equal, call a tie
-  2b. else if the following combinations exist, the user automatically loses
-  2c. else all other combinations result in winning decisions
+  2. If computer is not defined, randomize it as a round number between 0 and 3
+   */
+  if (!computer) {
+    computer = Math.round(Math.random() * 3);
+    if (computer > 0) { computer = 'rock'; }
+    else if (computer > 1) { computer = 'scissors'; }
+    else { computer = 'paper'; }
+  }
+
+  /*
+  3a. if strings are equal, call a tie
+  3b. else if the following combinations exist, the user automatically loses
+  3c. else all other combinations result in winning decisions
    */
   if (user === computer) {
     decision = 'it\'s a tie';
@@ -193,7 +203,7 @@ function game(user, computer){
   return decision;
 }
 
-console.log(game('rock'));
+console.log(game('paper'));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -207,7 +217,6 @@ Using the miles function below do the following:
 */
 
 function miles(/*add your code here*/){
-    /*add your code here*/
   }
 
 
