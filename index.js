@@ -116,38 +116,41 @@ Use the hungryDog function and feeding requirements below to do the following:
   NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
 */  
 
-function hungryDog(weight , age){
+function hungryDog(weight, age){
+    let multiplier;
     // If age given is less than 1 which means doggy is a puppy
     if (age < 1) {
       // if doggy's age is between 2-4 months, let food be 10% of doggy's weight
       if ((age >= (2/12))  && age <= (4/12)) {
-      return weight * .10;
+      multiplier =  .10;
       }
       // else if doggy's age is between 4-7 months, let food be 5% of doggy's weight
       else if ((age >= (4/12))  && (age <= (7/12))) {
-       return weight * .05;
+       multiplier =  .05;
       }
       // else all other ages under 1 year old
-     return weight * .04;
+     multiplier =  .04;
     } else {
     // else all other cases are true: age is 1 or higher and doggy is an adult
       if (weight <= 5) {
         // if weight is up to 5 lbs
-       return weight * .05;
+       multiplier =  .05;
       } else if (weight > 5 && weight <= 10) {
         // if weight is between 5-10 lbs
-       return weight *  .04;
+       multiplier =   .04;
       } else if (weight > 10 && weight <= 15) {
         // if weight is between 11-15 lbs
-        return weight * .03;
+        multiplier =  .03;
       } else {
         // else weight is higher than 15
-       return weight * .02;
+       multiplier =  .02;
       }
     }
+    let food = weight * multiplier;
+    return food;
   }
 
-console.log(hungryDog(10,0.6));
+console.log(hungryDog(Math.random() * 101, Math.random() * 16));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -217,12 +220,15 @@ Using the miles function below do the following:
 */
 
 function miles(km){
+  /*
+  Per Google 1 km = 0.621371 miles
+   */
   let miles = km * 0.621371;
   return miles;
 }
 
-console.log(miles(1));
-
+// Return a random calculation where km < 11
+console.log(miles(Math.random() * 11));
 
 //Task 5b - Feet to CM
 /*
@@ -233,11 +239,15 @@ Using the feet function below do the following:
 */
 
 function feet(cm){
+  /*
+  Per Google 1 ft = 30.48 cm
+   */
   let feet = cm / 30.48;
   return feet; 
 }
 
-
+// return a random calucation where cm < 300
+console.log(feet(Math.random() * 301));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -249,10 +259,20 @@ Using the annoyingSong function below do the following:
       "{number} bottles of soda on the wall, {number} bottles of soda, take one down pass it around {number left over} bottles of soda on the wall"
 */
 
-function annoyingSong(/*add your code here*/){
-        /*add your code here*/
+function annoyingSong(start){
+  /*
+  1. Declare i so we can modify i and leave start as immutable value
+  2. Set i to be greater than 0 so it stops at 0
+  3. Finally let i decrement until it gets to the set value of 0
+  4. Return the requested string
+   */
+  for (let i = start; i > 0; i--) {
+    return `${i} bottles of soda on the wall, ${i} bottles of soda, take one down pass it around ${i - 1} bottles of soda on the wall`;
   }
+}
 
+// return the annoying song function where start is a random value between 0 and 10
+console.log(annoyingSong(Math.round(Math.random() * 11)));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -269,11 +289,44 @@ Using the grade function below do the following:
    below should return 'you got an F'
 */
   
-function grade(/*Your Code here */){
-  /*Your Code here */
+function grade(score){
+  /*
+  1. Declare letter as an empty variable
+  2. Check the value of score and assign its respective letter
+   */
+  let letter;
+  if (score < 60) {
+    letter = 'F';
+  } else if (score >= 60 && score < 70) {
+    letter = 'D';
+  } else if (score >= 70 && score < 80) {
+    letter = 'C';
+  } else if (score >= 80 && score < 90) {
+    letter = 'B';
+  } else {
+    letter = 'A';
   }
-  
-  
+
+  /*
+  3. Declare prefix as an empty variable
+  4. If letter is an A or F, assign prefix as "an"
+  5. Else prefix should be "a"
+   */
+  let prefix;
+  if (letter === 'A' || letter === 'F') {
+    prefix = 'an';
+  } else {
+    prefix = 'a';
+  }
+
+  /*
+  6. Create result variable and return it
+   */
+  let result = 'you got ' + prefix + ' ' + letter;
+  return result;
+ }
+
+ console.log(grade(Math.random() * 101));
 
 /*💪💪💪💪💪💪💪💪💪💪 Stretch 💪💪💪💪💪💪💪💪💪💪*/
 
