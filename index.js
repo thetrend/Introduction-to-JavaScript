@@ -171,10 +171,29 @@ Use the game function below to do the following:
 */
 
 function game(user, computer){
-    /*add your code here*/
+  /*
+  1. Declare decision variable as an empty variable
+   */
+  let decision;
+
+  /*
+  2a. if strings are equal, call a tie
+  2b. else if the following combinations exist, the user automatically loses
+  2c. else all other combinations result in winning decisions
+   */
+  if (user === computer) {
+    decision = 'it\'s a tie';
+  } else if ((computer === 'scissors' && user === 'paper') || (computer === 'paper' && user === 'rock') || (computer === 'rock' && user === 'scissors')) {
+    decision = 'you lose!';
+  } else {
+    decision = 'you win!';
+  }
+
+  // Return decision
+  return decision;
 }
-  
-  
+
+console.log(game('rock'));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
