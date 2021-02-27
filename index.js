@@ -34,8 +34,12 @@ Do the following:
 
    HINT: no function required
 */
-
-
+let a = 25;
+const b = 15;
+if (b === 15) {
+  a = 30;
+}
+console.log(a);
 
 
 
